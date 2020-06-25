@@ -1,24 +1,34 @@
 <html>
 
+    
     <head>
         <title>Covid-19</title>
         
-             <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            
+                <!-- Compiled and minified JavaScript -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+                <script src="06-15-2020.js"></script>
+
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+              crossorigin=""/>
+                    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+              integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+              crossorigin=""></script>
+
     </head>
     
     <body>
             <nav>
-        <div class="nav-wrapper grey">
+        <div class="nav-wrapper #d50000 red accent-4">
           <a href="#" class="brand-logo"><i class="large material-icons">grade</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Numbers</a></li>
+            <a href="Covid-19 Dashboard"></a>
+            <li><a href="file:///C:/Users/2025031/Desktop/Python-Work/mapping.html">Map of Toronto</a></li>
             <li><a href="https://coronavirus.jhu.edu/map.html" target="_blank">John Hopkins</a></li>
             <li><a href="http://cnn.com" target="_blank">CNN</a></li>
           </ul>
@@ -26,17 +36,50 @@
       </nav>
         
         <div class="row">
-            <div class="col s12 m3 l4 blue">List</div>
-            <div class="col s12 m6 l4 green">Maps</div>
-            <div class="col s12 m3 l4 purple">Graph</div>
-          
-     
-          
+                <div class="col s12 m3 l3 #c62828 #9e9e9e grey"><ul class="collection">
+        <li class="collection-item avatar">
+          <img src="images/yuna.jpg" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle">folder</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle green">insert_chart</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle red">play_arrow</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+      </ul>
+         </div>
+                      
+             <div class="col s12 m6 l6 #bdbdbd grey lighten-1">Maps</div>
+            <div id="map" style="height:500px;" class="col s12 m6 l6">Map</div>
+            <div class="col s12 m3 l3 #e53935 #9e9e9e grey" id="mylist"></div>
+                 
     </div>
          
         <h4>Covid-19 Dashboard</h4>
         <p class="container">This software will provide timely info about the pandemic.</p>
-        <a href="http://cnn.com" target="_blank">CNN</a>
         <img src="coronavirus.jpg" alt="Covid-19" width="500" height="400">
         
         <style>
@@ -50,13 +93,14 @@
             }
             
         </style>
+
         
-        <footer class="page-footer">
-          <div class="container">
+        <footer class="page-footer #d50000 red accent-4">
+          <div class="container ">
             <div class="row">
-              <div class="col l6 s12">
+              <div class="col l6 s12 ">
                 <h5 class="white-text">Covid-19</h5>
-                <p class="grey-text text-lighten-4">Covid-19 stands for coronavirus disease 2019. Covid-19 started in Wuhan China and has since affected 213 countries. Currently New York, USA has the most confirmed cases Covid-19 cases in the world. </p>
+                <p class="grey-text text-lighten-4">Covid-19 stands for coronavirus disease 2019. Covid-19 started in Wuhan China and has since affected 213 countries. Currently New York, USA has the most confirmed Covid-19 cases in the world. </p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Covid-19 data</h5>
@@ -79,6 +123,60 @@
             
         
     </body>
+    
+      <script>
+        
+        makelist();
+        makemap();
+        
+        function makelist() {
+            
+            //data = [{pname:"NYC",cname:"USA",conf:218000},{pname:"Moscow",cname:"Russia",conf:212000},{pname:"Sao Paulo",cname:"Brazil",conf:100000}];
+            
+            mylist = document.getElementById("mylist");
+            
+            myhtml = "<ul class='collection'><h3>Top 5</h3>";
+            // 3 parts of c for loop - 1) counter 2) loop cond. 3) increment or decrement
+            for (i=0; i<5;i++) {
+                myhtml = myhtml + "<li class='collection-item avatar'>";
+                myhtml = myhtml + "<i class='material-icons circle'>adb</i>"
+                if (data[i]['pname'] == "") {
+                    myhtml = myhtml + "<b>" + data[i]['cname'] + "</b><br>";
+                } else {
+                    myhtml = myhtml + "<b>" + data[i]['pname'] + ", " + data[i]['cname'] + "</b><br>";
+                }
+                myhtml = myhtml + data[i]['conf'] + "</li>";
+            }
+            myhtml = myhtml + "</ul>";
+            
+            mylist.innerHTML = myhtml;
+            
+        }
+          
+    
+        function makemap() {
+            
+            // step 3 - initialize the map
+            var map = L.map('map').setView([30,0], 1.5);
+
+            // step 4 load a tile layer
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
+            {
+              maxZoom: 17,
+              minZoom: 1
+            }).addTo(map);
+        
+            // step 5 
+            for (i=0;i<data.length;i++) {
+                L.circle([data[i]['lat'], data[i]['lon']], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: data[i]['conf'] * 2
+                }).bindPopup(data[i]['cname'] + ": " + data[i]['conf'], { maxWidth: "auto"}).addTo(map);
+            }
+        }
+    </script>
     
 </html>
 
