@@ -20,68 +20,14 @@
               integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
               crossorigin=""></script>
 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha256-nZaxPHA2uAaquixjSDX19TmIlbRNCOrf5HO1oHl5p70=" crossorigin="anonymous"></script>
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+        
     </head>
     
     <body>
-            <nav>
-        <div class="nav-wrapper #d50000 red accent-4">
-          <a href="#" class="brand-logo"><i class="large material-icons">grade</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <a href="Covid-19 Dashboard"></a>
-            <li><a href="file:///C:/Users/2025031/Desktop/Python-Work/mapping.html">Map of Toronto</a></li>
-            <li><a href="https://coronavirus.jhu.edu/map.html" target="_blank">John Hopkins</a></li>
-            <li><a href="http://cnn.com" target="_blank">CNN</a></li>
-          </ul>
-        </div>
-      </nav>
-        
-        <div class="row">
-                <div class="col s12 m3 l3 #c62828 #9e9e9e grey"><ul class="collection">
-        <li class="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle">folder</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle green">insert_chart</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-      </ul>
-         </div>
-                      
-             <div class="col s12 m6 l6 #bdbdbd grey lighten-1">Maps</div>
-            <div id="map" style="height:500px;" class="col s12 m6 l6">Map</div>
-            <div class="col s12 m3 l3 #e53935 #9e9e9e grey" id="mylist"></div>
-                 
-    </div>
-         
-        <h4>Covid-19 Dashboard</h4>
-        <p class="container">This software will provide timely info about the pandemic.</p>
-        <img src="coronavirus.jpg" alt="Covid-19" width="500" height="400">
-        
+       
         <style>
             .nav-wrapper {
                 background-color: grey;
@@ -94,40 +40,59 @@
             
         </style>
 
+            <nav>
+            <div class="nav-wrapper #b71c1c red darken-4">
+              <a href="#" class="brand-logo">Covid-19 Dashboard</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="https://github.com/selinal46/covidboard" target="_blank">Github</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+              </ul>
+            </div>
+        </nav>
+                
+
         
-        <footer class="page-footer #d50000 red accent-4">
-          <div class="container ">
-            <div class="row">
-              <div class="col l6 s12 ">
-                <h5 class="white-text">Covid-19</h5>
-                <p class="grey-text text-lighten-4">Covid-19 stands for coronavirus disease 2019. Covid-19 started in Wuhan China and has since affected 213 countries. Currently New York, USA has the most confirmed Covid-19 cases in the world. </p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Covid-19 data</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data
-                    " target="_blank">John Hopkins University Data</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.worldometers.info/coronavirus/" target="_blank">World-o-meter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html?topic=tilelink" target="_blank">Canada Official Covid-19 Updates</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+        <div class="row">
+          <div id="map" style="height:500px;" class="col s12 m6 l6 #bdbdbd grey lighten-1"> Map</div>
+        <div class="col s20 m12 l6 #bdbdbd grey lighten-1"><canvas height="246.8"; id="chartjs-2">Graph</canvas>
+               </div>
+          <div class="col s12 m12 l12 #bdbdbd grey lighten-1" id="mylist"></div>
             
-        
+                
+          <footer class="page-footer #b71c1c red darken-4">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col l6 s6">
+                        <h5 class="white-text">Covid Dashboard</h5>
+                        <p class="grey-text text-lighten-4">Covid-19 stands for coronavirus disease 2019. Covid-19 started in Wuhan China and has since affected 213 countries. Currently New York, USA has the most confirmed Covid-19 cases in the world.</p>
+                      </div>
+                      <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Covid-19 Data</h5>
+                        <ul>
+                          <li><a class="grey-text text-lighten-3" href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data
+                    " target="_blank">John Hopkins Data</a></li>
+                          <li><a class="grey-text text-lighten-3" href="https://www.worldometers.info/coronavirus/" target="_blank">World-o-meter</a></li>
+                          <li><a class="grey-text text-lighten-3" href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html?topic=tilelink" target="_blank">Canada Official Covid-19 Updates</a></li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-copyright">
+                    <div class="container">
+                    © 2020 Copyright
+                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                    </div>
+                  </div>
+                </footer>
+        </div>
     </body>
     
       <script>
         
         makelist();
         makemap();
+        makechart();
         
         function makelist() {
             
@@ -153,7 +118,6 @@
             
         }
           
-    
         function makemap() {
             
             // step 3 - initialize the map
@@ -176,8 +140,19 @@
                 }).bindPopup(data[i]['cname'] + ": " + data[i]['conf'], { maxWidth: "auto"}).addTo(map);
             }
         }
+          
+                  function makechart() {
+              labels = ['nyc','moscow','france','iran','turkey'];
+        data = [210000,207000,150000,120000,75000];
+        
+              new Chart(document.getElementById("chartjs-2"),{"type":"horizontalBar","data":{"labels": labels,"datasets":[{"label":"Covid-19 Data","data": data,"fill":false,"backgroundColor":["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],"borderColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],"borderWidth":1}]},"options":{"scales":{"xAxes":[{"ticks":{"beginAtZero":true}}]}}});
+          }
+    
+          
     </script>
     
+    </body>
+        
 </html>
 
 
